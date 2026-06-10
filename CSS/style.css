@@ -341,8 +341,7 @@ main .about-grid {
 }
 
 
-
-/* Arrow button on the right of the front panel — slides to the back */
+/* Arrow button on the right of the front panel*/
 .arrow-btn {
     height: 100%;
     padding: 0 20px;
@@ -360,7 +359,7 @@ main .about-grid {
     background: rgba(0,0,0,0.3);
 }
 
-/* Circular close button on the back panel — slides back to the front */
+/* Circular close button on the back panel*/
 .close-btn {
     width: 36px;
     height: 36px;
@@ -373,7 +372,7 @@ main .about-grid {
     flex-shrink: 0;
 }
 
-/* Full description text shown on the back panel */
+/* Description text shown on the back panel */
 .detail-box p {
     margin: 0 0 6px;
     color: rgba(255,255,255,0.85);
@@ -381,7 +380,7 @@ main .about-grid {
     font-family: 'Lato', sans-serif;
 }
 
-/* Wrapper for the project image on the back panel */
+/* Wrapper for the image on the back panel */
 .back-img-wrap {
     display: flex;
     flex-direction: column;
@@ -390,7 +389,7 @@ main .about-grid {
     flex-shrink: 0;
 }
 
-/* Project image shown on the back panel */
+/* Image shown on the back panel */
 .back-img {
     width: 300px;
     height: 250px;
@@ -399,21 +398,13 @@ main .about-grid {
     border: 1px solid rgba(255,255,255,0.2);
 }
 
-/* Small caption below the back panel image */
-.back-img-label {
-    font-size: 11px;
-    color: rgba(255,255,255,0.6);
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-}
 
-/* Thumbnail shown on the front card on mobile only — hidden on desktop via CSS */
+/* Thumbnail shown on the front card on mobile only — hidden on desktop */
 .project-mobile-thumb {
     display: none;
 }
 
-/* ─── BLOGS PAGE ───
-   Sidebar on the left, blog content on the right */
+/* BLOGS PAGE ─ Sidebar on the left */
 .blogs-layout {
     display: flex;
     flex: 1;
@@ -422,7 +413,7 @@ main .about-grid {
     height: calc(100vh - 100px - 61px);
 }
 
-/* Dark scrollable sidebar listing all genres and blog titles */
+/* Scrollable sidebar listing all genres and blog titles */
 .genre-sidebar {
     width: 300px;
     min-width: 50px;
@@ -435,7 +426,7 @@ main .about-grid {
     transition: width 0.3s ease;
 }
 
-/* Sticky header inside the sidebar with the genre toggle icon */
+/* Sticky header in the sidebar with the genre toggle icon */
 .genre-sidebar-header {
     display: flex;
     align-items: center;
@@ -456,14 +447,14 @@ main .about-grid {
     background: rgba(255,255,255,0.05);
 }
 
-/* Removes default list styling from the genre list */
+/* Remove default list styling from the genre list */
 #genre-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Genre category label (e.g. "Action RPG") */
+/* Genre category label */
 .genre-heading {
     padding: 12px 16px 6px;
     color: #9C8E70;
@@ -495,13 +486,13 @@ main .about-grid {
     background: rgba(255,255,255,0.08);
 }
 
-/* Highlighted style for the currently selected blog in the sidebar */
+/* Highlight for the currently selected blog in the sidebar */
 .genre-item.active {
     color: #9C8E70;
     font-weight: bold;
 }
 
-/* Main blog reading area on the right */
+/* Blog text*/
 .blog-content {
     flex: 1;
     padding: 32px 40px;
@@ -511,7 +502,7 @@ main .about-grid {
     overflow-y: auto;
 }
 
-/* Large genre label above the blog post */
+/* Genre label above the blog post */
 .blog-genre-title {
     font-family: 'Italiana', serif;
     font-style: italic;
@@ -520,7 +511,7 @@ main .about-grid {
     margin: 0 0 4px;
 }
 
-/* Game title below the genre label */
+/* Game title  */
 .blog-game-title {
     font-family: 'Kaisei HarunoUmi', serif;
     font-style: italic;
@@ -529,7 +520,7 @@ main .about-grid {
     margin: 0 0 16px;
 }
 
-/* Full-width cover image at the top of each blog post */
+/* Full-width cover image at the top of blog post */
 .blog-cover {
     width: 100%;
     max-height: 400px;
@@ -539,7 +530,7 @@ main .about-grid {
     margin-bottom: 6px;
 }
 
-/* Small italic caption below the cover image */
+/*Caption below the cover image */
 .blog-cover-label {
     font-size: 12px;
     color: #F1EFEF;
@@ -548,7 +539,7 @@ main .about-grid {
     font-family: 'Lato', sans-serif;
 }
 
-/* Body text of the blog post */
+/* Text of the blog post */
 .blog-text {
     font-family: 'Lato', sans-serif;
     font-size: 15px;
@@ -558,18 +549,17 @@ main .about-grid {
     width: 100%;
 }
 
-/* ─── CONTACT PAGE ───
-   Dark background page where the footer acts as the main content */
+/* CONTACT PAGE - Dark background page */
 body.contact-page {
     background-color: #161515;
 }
 
-/* The main element on the contact page is empty — the footer is the content */
+/* Main element is empty — the footer is the content */
 .contact-main {
     flex: 0;
 }
 
-/* Contact page footer is centred with large spacing between columns */
+/* Footer is centred with large spacing between columns */
 #contact-footer {
     display: flex;
     justify-content: center;
@@ -597,7 +587,7 @@ body.contact-page {
     align-items: center;
 }
 
-/* Large link text on the contact page */
+/* Link text on the contact page */
 #contact-footer a {
     font-size: 32px;
     color: #9C8E70;
@@ -605,7 +595,7 @@ body.contact-page {
     font-family: 'Lato', sans-serif;
 }
 
-/* Large paragraph text on the contact page */
+/* Text on the contact page */
 #contact-footer p {
     font-size: 32px;
     font-style: italic;
@@ -622,8 +612,7 @@ body.contact-page {
     font-family: 'Javanese Text', serif;
 }
 
-/* ─── MENU ICON ───
-   Three-line hamburger icon used in the blogs sidebar header */
+/* MENU ICON - Three-line icon used in the blogs sidebar header */
 .menu-icon {
     display: flex;
     flex-direction: column;
@@ -631,7 +620,7 @@ body.contact-page {
     cursor: pointer;
 }
 
-/* Each line of the menu icon */
+/* Lines of the menu icon */
 .menu-line {
     width: 25px;
     height: 3px;
@@ -639,8 +628,7 @@ body.contact-page {
     border-radius: 2px;
 }
 
-/* ─── TABLET (max-width: 900px) ───
-   Adjustments for screens like iPads and smaller laptops */
+/* TABLET (max-width: 900px)- Responsiveness for screens like iPads and smaller laptops */
 @media (max-width: 900px) {
 
     /* Header height becomes flexible and content can wrap onto a second line */
@@ -651,7 +639,7 @@ body.contact-page {
         gap: 8px;
     }
 
-    /* Slightly smaller logo on tablet */
+    /* Smaller logo on tablet */
     .Navlogo {
         font-size: 48px;
     }
@@ -670,7 +658,7 @@ body.contact-page {
         gap: 20px;
     }
 
-    /* Even sections (which normally reverse direction) also stack vertically */
+    /* Sections stack vertically */
     .main-section:nth-child(even) {
         flex-direction: column;
     }
@@ -770,8 +758,7 @@ body.contact-page {
     }
 }
 
-/* ─── MOBILE (max-width: 600px) ───
-   Adjustments for phones */
+/* ─── MOBILE (max-width: 600px) ─ Responsiveness for phones */
 @media (max-width: 600px) {
 
     /* Tighter padding on mobile */
