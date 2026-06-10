@@ -698,30 +698,36 @@ body.contact-page {
         order: 1;
     }
 
-    /* Right image column appears second */
-    .right-col {
-        order: 2;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 1rem;
-        gap: 1rem;
+    /* Right image column appears second, images stacked vertically */
+.right-col {
+    order: 2;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+/* Left image column moves to the right-hand side on tablet, images stacked vertically */
+.left-col {
+    order: 3;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+
+    
+     /* Project card title on tablet */
+    .info-box h2 {
+        font-size: 22px;
     }
 
-    /* Left image column moves to the right-hand side on tablet */
-    .left-col {
-        order: 3;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 1rem;
-        gap: 1rem;
+    /* Project card description text on tablet */
+    .detail-box p {
+        font-size: 13px;
     }
-
-    /* Each image card has a fixed minimum height */
-    .right-col .image-card,
-    .left-col .image-card {
-        flex: 0 0 auto;
-        min-height: 160px;
-    }
+}
 
     /* Blogs layout stays as a row on tablet but the sidebar is narrower */
     .blogs-layout {
