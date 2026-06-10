@@ -46,24 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ─── PROJECTS PAGE ───
+    //  PROJECTS PAGE 
     // Array of projects 
     const projects = [
         {
             title: "Game",
-            image: "../Images/Game.png",
+            image: "./Images/Game.png",
             color: "#335613",
             details: "<strong> Space travel </strong> is a 3D space exploration and combat experience game, set within a dynamic solar system. Players pilot a spacecraft using keyboard and mouse controls to navigate between orbiting planets and engage in real-time battles. The primary objective is to locate and collect three Infinity Stones hidden on different planets. Because the planets continuously orbit the sun, players must use a navigation map to track their changing positions. Strategic route planning is essential for travelling efficiently across the solar system. Along the way, hostile enemy spacecraft patrol the environment and create unexpected challenges. Players can choose to engage enemies in combat using their ship's laser weapon or avoid confrontation through skillful maneuvering. By combining exploration, navigation, and combat, the game delivers an engaging experience that rewards spatial awareness, decision-making, and mastery of movement."
         },
         {
             title: "Embedded System",
-            image: "../Images/EOM.png",
+            image: "./Images/EOM.png",
             color: "#543909",
             details: "<strong>Echoes of the Machine</strong> was a collaborative embedded systems project developed with my group members and published on my GitHub. The project focused on designing an interactive feedback system using an Arduino Uno and a combination of sensors and output devices. As shown in the system architecture, the prototype integrated ultrasonic sensing, motion detection, sound sensors, LEDs, and a NeoPixel ring to monitor environmental inputs and provide real-time visual feedback. The objective was to explore how multiple sensing technologies could be combined to create responsive machine behaviour, demonstrating key embedded systems concepts such as sensor integration, signal processing, hardware interfacing, and feedback control. Through this project, we gained practical experience in circuit design, microcontroller programming, debugging, and collaborative system development while creating a functional prototype capable of reacting dynamically to its surroundings."
         },
         {
             title: "Electrical",
-            image: "../Images/Mic.png",
+            image: "./Images/Mic.png",
             color: "#5B5858",
             details: "<strong> Mic Subsystem</strong> focuses on the design and implementation of an audio input subsystem for a Crypto-Box security system. The subsystem uses a microphone sensor to detect clap inputs, which are converted into electrical signals for processing. A monostable 555 timer circuit is used to generate clean digital pulses from each clap, allowing accurate counting of inputs. The clap count is displayed using a CD4033BE counter IC connected to a 7-segment display, representing the first digit of a four-digit unlock code. Logic gates are used to verify whether the correct number of claps (six) has been entered and to indicate success via an output signal. An astable 555 timer circuit is intended to function as a 21-second master countdown timer triggered by the first clap. Simulation and measurement results show similar waveform behaviour, although some component values did not produce fully expected timing results in practice. Overall, the subsystem successfully detects and counts claps and displays the correct digit, but the master timer triggering function was not fully achieved."
         }
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             genre: "Action RPG",
             title: "WarFrame",
-            image: "../Images/Warframe.jpg",
+            image: "./Images/Warframe.jpg",
             imgLabel: "Image from Wikipedia",
             text: `Warframe stands out because of its fluid movement, fast combat and highly layered progression systems, all of which combine to create a gameplay experience focused on speed, mastery and continuous improvement. At its core, the game is built around momentum. Players are constantly moving, attacking and combining abilities in ways that make gameplay feel smooth and uninterrupted. Through ludoliteracy, players gradually learn how movement, combat and progression systems connect together to create efficiency and mastery.
 
@@ -246,7 +246,7 @@ Overall, Warframe succeeds because it combines movement, combat and progression 
         {
             genre: "Hero Shooter",
             title: "Marvel Rivals",
-            image: "../Images/Marvel Rivals.jpg",
+            image: "./Images/Marvel Rivals.jpg",
             imgLabel: "Image from Epic Games",
             text: `Marvel Rivals creates its gameplay experience around teamwork, hero synergy, and fast paced multiplayer combat. Rather than focusing only on shooting accuracy or reaction speed, the game emphasises co-operation, role co-ordination, and the strategic use of character abilities. Every hero has unique movement options, cooldown abilities, and ultimate attacks, meaning matches are built around layered decision-making and team interaction. Through the idea of ludoliteracy, players gradually learn how different systems connect and how teamwork becomes more important than individual performance alone.
 
@@ -269,7 +269,7 @@ Overall, Marvel Rivals succeeds because it creates a multiplayer experience buil
         {
             genre: "Horror",
             title: "Phasmophobia",
-            image: "../Images/Phasmo.jpg",
+            image: "./Images/Phasmo.jpg",
             imgLabel: "Image from Wikipedia",
             text: `Phasmophobia is a horror-survival investigation game that places players in the role of paranormal investigators exploring haunted houses, schools, prisons, and abandoned locations in search of evidence to identify different ghost types. Using tools such as EMF readers, thermometers, spirit boxes, flashlights, and video cameras, players slowly piece together clues while trying to survive increasingly dangerous encounters. Unlike many horror games that give players weapons or combat systems, Phasmophobia removes the ability to fight back completely. This design choice creates vulnerability and tension because survival depends on observation, communication, and quick decision-making rather than power. According to Zagal's (2010) concept of ludoliteracy, players learn meaning through interaction with systems and mechanics rather than only through story or visuals. In Phasmophobia, fear is taught mechanically. Players gradually learn how the game communicates danger through sounds, lighting, environmental changes and ghost behaviour patterns.
 
