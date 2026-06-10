@@ -1,12 +1,15 @@
+/* RESET - Removes default browser margin and padding from every element */
 * {
     margin: 0;
     padding: 0;
 }
 
+/* Fill the full browser height */
 html {
     height: 100%;
 }
 
+/* BODY- Footer to always stick to the bottom */
 body {
     display: flex;
     flex-direction: column;
@@ -16,13 +19,14 @@ body {
     padding: 0;
 }
 
+/* Main content to fill all available space between the header and footer */
 main {
     flex: 1;
     margin: 0;
     padding: 0;
 }
 
-/* ─── HEADER ─── */
+/* HEADER - Contains logo and navigation links */
 header {
     background: #161515;
     height: 100px;
@@ -33,6 +37,7 @@ header {
     margin-bottom: 0;
 }
 
+/* Push navigation links to the right side of the header */
 nav {
     margin-left: auto;
     display: flex;
@@ -40,31 +45,36 @@ nav {
     align-items: center;
 }
 
+/* Logo to the top left */
 .Navlogo {
     font-family: 'Beau Rivage', cursive;
     font-size: 72px;
     color: #F1EFEF;
 }
 
+/* Smooth colour transition for the nav links */
 nav a {
     text-decoration: none;
     transition: color 0.3s ease;
     font-family: 'Javanese Text', serif;
 }
 
+/* Default nav link colour */
 nav a.label {
     color: #543509;
 }
 
+/* Nav link colour for hovering */
 nav a.label:hover {
     color: #335613;
 }
 
+/* Nav link colour for the active page */
 nav a.label.active {
     color: #9C8E70;
 }
 
-/* ─── FOOTER ─── */
+/* FOOTER - Dark bottom bar with three columns: left, center, right */
 footer {
     display: flex;
     justify-content: space-between;
@@ -78,6 +88,7 @@ footer {
     align-self: stretch;
 }
 
+/* Each footer column stacks content vertically */
 .footer-left, .footer-center, .footer-right {
     display: flex;
     flex-direction: column;
@@ -85,28 +96,32 @@ footer {
     flex: 1;
 }
 
+/* Center column content horizontally */
 .footer-center {
     align-items: center;
     text-align: center;
 }
 
+/* Align connent to the right */
 .footer-right {
     align-items: flex-end;
     text-align: right;
 }
 
+/* Footer link styling */
 footer a {
     color: #9C8E70;
     text-decoration: none;
     font-family: 'Lato', sans-serif;
 }
 
+/* Footer text styling */
 footer p {
     color: #F1EFEF;
     font-family: 'Lato', sans-serif;
 }
 
-/* ─── BUTTONS ─── */
+/* BUTTONS - Download CV button */
 .download-btn {
     background: #9C8E70;
     color: #F1EFEF;
@@ -118,12 +133,13 @@ footer p {
     cursor: pointer;
 }
 
+/* Button becomes transparent with coloured text on hover */
 .download-btn:hover {
     background: transparent;
     color: #9C8E70;
 }
 
-/* ─── GENERAL SECTION ─── */
+/* GENERAL SECTION */
 section {
     padding: 5px;
     margin: 10px;
@@ -138,7 +154,7 @@ section p {
     margin-bottom: 16px;
 }
 
-/* ─── HOME PAGE ─── */
+/* HOME PAGE */
 .main-section {
     display: flex;
     align-items: center;
@@ -147,6 +163,7 @@ section p {
     overflow: hidden;
 }
 
+/* Text in home page sections */
 .maintext {
     font-family: 'Lato', sans-serif;
     font-style: italic;
@@ -157,6 +174,7 @@ section p {
     flex: 1;
 }
 
+/* Images on the home page */
 .main-sectionimg {
     width: 500px;
     height: 400px;
@@ -165,6 +183,7 @@ section p {
     flex-shrink: 0;
 }
 
+/* Stack headings and paragraphs vertically */
 .text-content {
     display: flex;
     flex-direction: column;
@@ -172,6 +191,7 @@ section p {
     flex: 1;
 }
 
+/* Heading above each home page section */
 .section-heading {
     font-family: 'Italiana', serif;
     font-size: 28px;
@@ -179,7 +199,7 @@ section p {
     font-style: italic;
 }
 
-/* ─── ABOUT PAGE ─── */
+/* ABOUT PAGE -NThree-column layout */
 body.about-page {
     background-color: #5B5858;
 }
@@ -188,6 +208,7 @@ main .about-grid {
     margin: 0;
 }
 
+/* Three-column grid that fills the space between header and footer */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -197,7 +218,7 @@ main .about-grid {
     align-items: stretch;
 }
 
-/* Side columns */
+/* Left and right image columns stackS cards vertically */
 .left-col,
 .right-col {
     display: flex;
@@ -207,7 +228,7 @@ main .about-grid {
     gap: 1.5rem;
 }
 
-/* Image cards in side columns */
+/* White card that wraps each image in the side columns */
 .left-col .image-card,
 .right-col .image-card {
     flex: 1;
@@ -220,6 +241,7 @@ main .about-grid {
     min-height: 0;
 }
 
+/* Images inside the cards TO fill the card width and crop to fit */
 .left-col .image-card img,
 .right-col .image-card img {
     width: 100%;
@@ -229,6 +251,7 @@ main .about-grid {
     border-radius: 4px;
 }
 
+/* Small caption text below image */
 .left-col .image-card p,
 .right-col .image-card p {
     font-size: 0.75rem;
@@ -239,7 +262,7 @@ main .about-grid {
     max-width: 100%;
 }
 
-/* Center column */
+/* Green centre column with text */
 .center-col {
     background: #335613;
     padding: 1.5rem;
@@ -247,6 +270,7 @@ main .about-grid {
     overflow-y: auto;
 }
 
+/* Section headings inside the green column */
 .center-col h2 {
     color: #161515;
     font-weight: bold;
@@ -254,10 +278,12 @@ main .about-grid {
     font-family: 'Kaisei HarunoUmi', serif;
 }
 
+/* Remove top margin from the very first heading */
 .center-col section:first-child h2 {
     margin-top: 0;
 }
 
+/* Text inside the green column */
 .center-col p {
     color: #161515;
     font-family: 'Lato', sans-serif;
@@ -267,33 +293,8 @@ main .about-grid {
     margin-bottom: 0;
 }
 
-/* About row layout (alternate image/text) */
-.about-row {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
 
-.about-row.reverse {
-    flex-direction: row-reverse;
-}
-
-.about-row .image-card {
-    flex: 0 0 350px;
-}
-
-.about-row .text-card {
-    flex: 1;
-}
-
-.about-row .image-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-/* ─── PROJECTS PAGE ─── */
+/* PROJECTS PAGE -Vertically stack sliding cards */
 #projects-container {
     display: flex;
     flex-direction: column;
@@ -302,12 +303,14 @@ main .about-grid {
     background-color: transparent;
 }
 
+/* Clips the sliding track */
 .wrapper {
     overflow: hidden;
     border-radius: 12px;
     height: 300px;
 }
 
+/* The track twice the size slides left to reveal the back panel */
 .track {
     display: flex;
     width: 200%;
@@ -315,17 +318,20 @@ main .about-grid {
     transition: transform 0.4s ease;
 }
 
+/* Panel takes up half the track width */
 .front, .back {
     width: 50%;
     display: flex;
     align-items: center;
 }
 
+/* Text area in the front panel */
 .info-box {
     flex: 1;
     padding: 14px 20px;
 }
 
+/* Title on the front panel */
 .info-box h2 {
     margin: 0 0 4px;
     color: #fff;
@@ -334,13 +340,9 @@ main .about-grid {
     font-size: 32px;
 }
 
-.info-box p {
-    margin: 0;
-    color: rgba(255,255,255,0.75);
-    font-size: 32px;
-    font-family: 'Lato', sans-serif;
-}
 
+
+/* Arrow button on the right of the front panel — slides to the back */
 .arrow-btn {
     height: 100%;
     padding: 0 20px;
@@ -351,12 +353,14 @@ main .about-grid {
     cursor: pointer;
 }
 
+/* Back panel has a semi-transparent dark overlay */
 .back {
     gap: 16px;
     padding: 0 20px;
     background: rgba(0,0,0,0.3);
 }
 
+/* Circular close button on the back panel — slides back to the front */
 .close-btn {
     width: 36px;
     height: 36px;
@@ -369,6 +373,7 @@ main .about-grid {
     flex-shrink: 0;
 }
 
+/* Full description text shown on the back panel */
 .detail-box p {
     margin: 0 0 6px;
     color: rgba(255,255,255,0.85);
@@ -376,6 +381,7 @@ main .about-grid {
     font-family: 'Lato', sans-serif;
 }
 
+/* Wrapper for the project image on the back panel */
 .back-img-wrap {
     display: flex;
     flex-direction: column;
@@ -384,6 +390,7 @@ main .about-grid {
     flex-shrink: 0;
 }
 
+/* Project image shown on the back panel */
 .back-img {
     width: 300px;
     height: 250px;
@@ -392,6 +399,7 @@ main .about-grid {
     border: 1px solid rgba(255,255,255,0.2);
 }
 
+/* Small caption below the back panel image */
 .back-img-label {
     font-size: 11px;
     color: rgba(255,255,255,0.6);
@@ -399,7 +407,13 @@ main .about-grid {
     font-family: 'Lato', sans-serif;
 }
 
-/* ─── BLOGS PAGE ─── */
+/* Thumbnail shown on the front card on mobile only — hidden on desktop via CSS */
+.project-mobile-thumb {
+    display: none;
+}
+
+/* ─── BLOGS PAGE ───
+   Sidebar on the left, blog content on the right */
 .blogs-layout {
     display: flex;
     flex: 1;
@@ -408,6 +422,7 @@ main .about-grid {
     height: calc(100vh - 100px - 61px);
 }
 
+/* Dark scrollable sidebar listing all genres and blog titles */
 .genre-sidebar {
     width: 300px;
     min-width: 50px;
@@ -420,6 +435,7 @@ main .about-grid {
     transition: width 0.3s ease;
 }
 
+/* Sticky header inside the sidebar with the genre toggle icon */
 .genre-sidebar-header {
     display: flex;
     align-items: center;
@@ -440,12 +456,14 @@ main .about-grid {
     background: rgba(255,255,255,0.05);
 }
 
+/* Removes default list styling from the genre list */
 #genre-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+/* Genre category label (e.g. "Action RPG") */
 .genre-heading {
     padding: 12px 16px 6px;
     color: #9C8E70;
@@ -461,6 +479,7 @@ main .about-grid {
     border-top: none;
 }
 
+/* Clickable blog title in the sidebar */
 .genre-item {
     padding: 12px 20px;
     color: #F1EFEF;
@@ -476,11 +495,13 @@ main .about-grid {
     background: rgba(255,255,255,0.08);
 }
 
+/* Highlighted style for the currently selected blog in the sidebar */
 .genre-item.active {
     color: #9C8E70;
     font-weight: bold;
 }
 
+/* Main blog reading area on the right */
 .blog-content {
     flex: 1;
     padding: 32px 40px;
@@ -490,6 +511,7 @@ main .about-grid {
     overflow-y: auto;
 }
 
+/* Large genre label above the blog post */
 .blog-genre-title {
     font-family: 'Italiana', serif;
     font-style: italic;
@@ -498,6 +520,7 @@ main .about-grid {
     margin: 0 0 4px;
 }
 
+/* Game title below the genre label */
 .blog-game-title {
     font-family: 'Kaisei HarunoUmi', serif;
     font-style: italic;
@@ -506,6 +529,7 @@ main .about-grid {
     margin: 0 0 16px;
 }
 
+/* Full-width cover image at the top of each blog post */
 .blog-cover {
     width: 100%;
     max-height: 400px;
@@ -515,6 +539,7 @@ main .about-grid {
     margin-bottom: 6px;
 }
 
+/* Small italic caption below the cover image */
 .blog-cover-label {
     font-size: 12px;
     color: #F1EFEF;
@@ -523,6 +548,7 @@ main .about-grid {
     font-family: 'Lato', sans-serif;
 }
 
+/* Body text of the blog post */
 .blog-text {
     font-family: 'Lato', sans-serif;
     font-size: 15px;
@@ -532,15 +558,18 @@ main .about-grid {
     width: 100%;
 }
 
-/* ─── CONTACT PAGE ─── */
+/* ─── CONTACT PAGE ───
+   Dark background page where the footer acts as the main content */
 body.contact-page {
     background-color: #161515;
 }
 
+/* The main element on the contact page is empty — the footer is the content */
 .contact-main {
     flex: 0;
 }
 
+/* Contact page footer is centred with large spacing between columns */
 #contact-footer {
     display: flex;
     justify-content: center;
@@ -552,6 +581,7 @@ body.contact-page {
     box-sizing: border-box;
 }
 
+/* Each column in the contact footer is centred */
 #contact-footer .footer-left,
 #contact-footer .footer-center,
 #contact-footer .footer-right {
@@ -567,6 +597,7 @@ body.contact-page {
     align-items: center;
 }
 
+/* Large link text on the contact page */
 #contact-footer a {
     font-size: 32px;
     color: #9C8E70;
@@ -574,6 +605,7 @@ body.contact-page {
     font-family: 'Lato', sans-serif;
 }
 
+/* Large paragraph text on the contact page */
 #contact-footer p {
     font-size: 32px;
     font-style: italic;
@@ -581,6 +613,7 @@ body.contact-page {
     font-family: 'Lato', sans-serif;
 }
 
+/* Larger download button on the contact page */
 #contact-footer .download-btn {
     color: #F1EFEF;
     font-size: 22px;
@@ -589,7 +622,8 @@ body.contact-page {
     font-family: 'Javanese Text', serif;
 }
 
-/* ─── MENU ICON ─── */
+/* ─── MENU ICON ───
+   Three-line hamburger icon used in the blogs sidebar header */
 .menu-icon {
     display: flex;
     flex-direction: column;
@@ -597,28 +631,79 @@ body.contact-page {
     cursor: pointer;
 }
 
+/* Each line of the menu icon */
 .menu-line {
     width: 25px;
     height: 3px;
     background: #F1EFEF;
     border-radius: 2px;
 }
-/*ABOUT PAGE: TABLET */
+
+/* ─── TABLET (max-width: 900px) ───
+   Adjustments for screens like iPads and smaller laptops */
 @media (max-width: 900px) {
 
+    /* Header height becomes flexible and content can wrap onto a second line */
+    header {
+        height: auto;
+        padding: 16px 20px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    /* Slightly smaller logo on tablet */
+    .Navlogo {
+        font-size: 48px;
+    }
+
+    /* Nav links wrap and align to the right */
+    nav {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    /* Home page sections stack vertically instead of side by side */
+    .main-section {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 20px;
+    }
+
+    /* Even sections (which normally reverse direction) also stack vertically */
+    .main-section:nth-child(even) {
+        flex-direction: column;
+    }
+
+    /* Images stretch to full width on tablet */
+    .main-sectionimg {
+        width: 100%;
+        height: 260px;
+    }
+
+    /* Slightly smaller body text on tablet */
+    .maintext {
+        font-size: 16px;
+        max-width: 100%;
+    }
+
+    /* About page collapses to two columns: text | images */
     .about-grid {
         grid-template-columns: 2fr 1fr;
         min-height: unset;
     }
 
+    /* Left image column is hidden on tablet */
     .left-col {
         display: none;
     }
 
+    /* Text column appears first */
     .center-col {
         order: 1;
     }
 
+    /* Right image column appears second and stacks its cards vertically */
     .right-col {
         order: 2;
         flex-direction: column;
@@ -627,15 +712,153 @@ body.contact-page {
         gap: 1rem;
     }
 
+    /* Each image card has a fixed minimum height */
     .right-col .image-card {
         flex: 0 0 auto;
         min-height: 160px;
     }
+
+    /* Blogs layout stays as a row on tablet but the sidebar is narrower */
+    .blogs-layout {
+        height: auto;
+        overflow: visible;
+        flex-direction: row;
+    }
+
+    /* Narrower sidebar on tablet */
+    .genre-sidebar {
+        width: 180px;
+        min-width: 180px;
+    }
+
+    /* Less padding around blog content on tablet */
+    .blog-content {
+        padding: 20px;
+    }
+
+    /* Footer stacks its three columns vertically on tablet */
+    footer {
+        flex-direction: column;
+        gap: 20px;
+        padding: 24px 20px;
+        text-align: center;
+    }
+
+    /* Left and right footer columns centre their content when stacked */
+    .footer-left,
+    .footer-right {
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Contact footer stacks vertically with reduced spacing */
+    #contact-footer {
+        flex-direction: column;
+        gap: 40px;
+        padding: 40px 20px;
+    }
+
+    /* Smaller text in the contact footer on tablet */
+    #contact-footer a,
+    #contact-footer p {
+        font-size: 20px;
+    }
+
+    #contact-footer .download-btn {
+        font-size: 16px;
+        padding: 14px 40px;
+    }
 }
 
-/*  MOBILE (max 600px) */
+/* ─── MOBILE (max-width: 600px) ───
+   Adjustments for phones */
 @media (max-width: 600px) {
 
+    /* Tighter padding on mobile */
+    header {
+        padding: 12px 16px;
+        gap: 6px;
+    }
+
+    /* Smaller logo on mobile — takes full width so nav wraps below it */
+    .Navlogo {
+        font-size: 32px;
+        width: 100%;
+    }
+
+    /* Nav links wrap and align to the left below the logo */
+    nav {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    /* Smaller nav link text on mobile */
+    nav a.label {
+        font-size: 12px;
+    }
+
+    /* Home sections stack vertically on mobile */
+    .main-section {
+        flex-direction: column;
+        padding: 20px 16px;
+        gap: 16px;
+    }
+
+    .main-section:nth-child(even) {
+        flex-direction: column;
+    }
+
+    /* Shorter images on mobile */
+    .main-sectionimg {
+        width: 100%;
+        height: 220px;
+    }
+
+    /* Smaller heading on mobile */
+    .section-heading {
+        font-size: 22px;
+    }
+
+    /* Slightly smaller body text on mobile */
+    .maintext {
+        font-size: 15px;
+    }
+
+    /* About page collapses to a single column on mobile */
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Right column image cards sit side by side in two columns */
+    .right-col {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    /* Each image card takes up roughly half the row */
+    .right-col .image-card {
+        flex: 1 1 45%;
+        min-height: 140px;
+    }
+
+    /* Less padding in the green text column on mobile */
+    .center-col {
+        padding: 1rem;
+    }
+
+    /* Smaller headings in the green column on mobile */
+    .center-col h2 {
+        font-size: 17px;
+    }
+
+    /* Smaller body text in the green column on mobile */
+    .center-col p {
+        font-size: 14px;
+    }
+
+    /* Project cards have automatic height on mobile */
     .wrapper {
         height: auto;
         min-height: unset;
@@ -643,6 +866,7 @@ body.contact-page {
         overflow: hidden;
     }
 
+    /* The sliding track stacks vertically on mobile instead of sliding */
     .track {
         flex-direction: column;
         width: 100%;
@@ -650,6 +874,7 @@ body.contact-page {
         transform: none !important;
     }
 
+    /* Front panel lays out thumbnail and text side by side on mobile */
     .front {
         width: 100%;
         flex-direction: row;
@@ -659,25 +884,30 @@ body.contact-page {
         min-height: 100px;
     }
 
+    /* Back panel is hidden on mobile since the slide mechanic is disabled */
     .back {
         width: 100%;
         display: none;
     }
 
+    /* Arrow button is hidden on mobile */
     .arrow-btn {
         display: none;
     }
 
+    /* Info box takes up remaining space next to the thumbnail */
     .info-box {
         padding: 0;
         flex: 1;
     }
 
+    /* Smaller project title on mobile */
     .info-box h2 {
         font-size: 18px;
         margin-bottom: 6px;
     }
 
+    /* Description text is clipped to a fixed height on mobile */
     .info-box p {
         font-size: 13px;
         line-height: 1.5;
@@ -685,12 +915,70 @@ body.contact-page {
         max-height: 60px;
     }
 
+    /* Thumbnail image shown on the left of each project card on mobile */
     .project-mobile-thumb {
+        display: block;
         width: 90px;
         height: 80px;
         object-fit: cover;
         border-radius: 8px;
         flex-shrink: 0;
         border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Blogs layout stacks sidebar above content on mobile */
+    .blogs-layout {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+
+    /* Sidebar takes full width and has a max height with scroll on mobile */
+    .genre-sidebar {
+        width: 100%;
+        min-width: unset;
+        max-height: 250px;
+    }
+
+    /* Smaller genre and game titles in the blog content on mobile */
+    .blog-genre-title {
+        font-size: 22px;
+    }
+
+    .blog-game-title {
+        font-size: 16px;
+    }
+
+    /* Slightly smaller blog body text on mobile */
+    .blog-text {
+        font-size: 14px;
+    }
+
+    /* Less padding around blog content on mobile */
+    .blog-content {
+        padding: 16px;
+    }
+
+    /* Tighter footer padding on mobile */
+    footer {
+        padding: 20px 16px;
+        gap: 16px;
+    }
+
+    /* Reduced spacing in the contact footer on mobile */
+    #contact-footer {
+        gap: 28px;
+        padding: 28px 16px;
+    }
+
+    /* Smaller text in the contact footer on mobile */
+    #contact-footer a,
+    #contact-footer p {
+        font-size: 16px;
+    }
+
+    #contact-footer .download-btn {
+        font-size: 14px;
+        padding: 12px 28px;
     }
 }

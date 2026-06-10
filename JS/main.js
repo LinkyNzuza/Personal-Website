@@ -1,112 +1,166 @@
+// Wait for page to load before running any JavaScript
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Get the current page URL so we can highlight the correct nav link
     const currentPage = window.location.pathname;
+
+    // Get all the navigation links on the page
     const navLinks = document.querySelectorAll('nav a');
 
-    // Active nav link
+    // Loop through each nav link and add an "active" class to the one that matches the current page
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
+
+        // Skip any links that just point to "#" (placeholder links)
         if (href === '#') return;
+
+        // Clean up the href and page name so they can be compared 
         const cleanHref = href.replace('./', '');
         const cleanPage = currentPage.split('/').pop();
+
+        // Check if this link is the home page link
         const isHome = cleanHref === 'index.html' && (currentPage === '/' || cleanPage === 'index.html' || cleanPage === '');
+
+        // If the link matches the current page, mark it as active
         if (isHome || cleanPage === cleanHref) {
             link.classList.add('active');
         }
     });
 
-    // Download CV button
+    // DOWNLOAD CV BUTTON 
+    // Find the download button by its ID in html
     const downloadBtn = document.getElementById('downloadBtn');
+
     if (downloadBtn) {
         downloadBtn.addEventListener('click', function() {
             this.textContent = 'Downloading...';
+
+            // Trigger the actual file download
             setTimeout(() => {
                 const link = document.createElement('a');
                 link.href = '../cv.pdf';
                 link.download = 'Linky_Nzuza_CV.pdf';
                 link.click();
-                this.textContent = 'Download CV';}, 1000);
+                this.textContent = 'Download CV';
+            }, 1000);
         });
     }
 
-    // Projects page 
+    // ─── PROJECTS PAGE ───
+    // Array of projects 
     const projects = [
-        { title: "Game", image: "../Images/Game.png", color: "#335613", details: "<strong> Space travel </strong> is a 3D space exploration and combat experience game, set within a dynamic solar system. Players pilot a spacecraft using keyboard and mouse controls to navigate between orbiting planets and engage in real-time battles. The primary objective is to locate and collect three Infinity Stones hidden on different planets. Because the planets continuously orbit the sun, players must use a navigation map to track their changing positions. Strategic route planning is essential for travelling efficiently across the solar system. Along the way, hostile enemy spacecraft patrol the environment and create unexpected challenges. Players can choose to engage enemies in combat using their ship’s laser weapon or avoid confrontation through skillful maneuvering. By combining exploration, navigation, and combat, the game delivers an engaging experience that rewards spatial awareness, decision-making, and mastery of movement." },
-        { title: "Embedded System", image: "../Images/EOM.png",  color: "#543909", details: "<strong>Echoes of the Machine</strong> was a collaborative embedded systems project developed with my group members and published on my GitHub. The project focused on designing an interactive feedback system using an Arduino Uno and a combination of sensors and output devices. As shown in the system architecture, the prototype integrated ultrasonic sensing, motion detection, sound sensors, LEDs, and a NeoPixel ring to monitor environmental inputs and provide real-time visual feedback. The objective was to explore how multiple sensing technologies could be combined to create responsive machine behaviour, demonstrating key embedded systems concepts such as sensor integration, signal processing, hardware interfacing, and feedback control. Through this project, we gained practical experience in circuit design, microcontroller programming, debugging, and collaborative system development while creating a functional prototype capable of reacting dynamically to its surroundings." },
-        { title: "Electrical", image: "../Images/Mic.png", color: "#5B5858", details: "<strong> Mic Subsystem</strong> focuses on the design and implementation of an audio input subsystem for a Crypto-Box security system. The subsystem uses a microphone sensor to detect clap inputs, which are converted into electrical signals for processing. A monostable 555 timer circuit is used to generate clean digital pulses from each clap, allowing accurate counting of inputs. The clap count is displayed using a CD4033BE counter IC connected to a 7-segment display, representing the first digit of a four-digit unlock code. Logic gates are used to verify whether the correct number of claps (six) has been entered and to indicate success via an output signal. An astable 555 timer circuit is intended to function as a 21-second master countdown timer triggered by the first clap. Simulation and measurement results show similar waveform behaviour, although some component values did not produce fully expected timing results in practice. Overall, the subsystem successfully detects and counts claps and displays the correct digit, but the master timer triggering function was not fully achieved." }
+        {
+            title: "Game",
+            image: "../Images/Game.png",
+            color: "#335613",
+            details: "<strong> Space travel </strong> is a 3D space exploration and combat experience game, set within a dynamic solar system. Players pilot a spacecraft using keyboard and mouse controls to navigate between orbiting planets and engage in real-time battles. The primary objective is to locate and collect three Infinity Stones hidden on different planets. Because the planets continuously orbit the sun, players must use a navigation map to track their changing positions. Strategic route planning is essential for travelling efficiently across the solar system. Along the way, hostile enemy spacecraft patrol the environment and create unexpected challenges. Players can choose to engage enemies in combat using their ship's laser weapon or avoid confrontation through skillful maneuvering. By combining exploration, navigation, and combat, the game delivers an engaging experience that rewards spatial awareness, decision-making, and mastery of movement."
+        },
+        {
+            title: "Embedded System",
+            image: "../Images/EOM.png",
+            color: "#543909",
+            details: "<strong>Echoes of the Machine</strong> was a collaborative embedded systems project developed with my group members and published on my GitHub. The project focused on designing an interactive feedback system using an Arduino Uno and a combination of sensors and output devices. As shown in the system architecture, the prototype integrated ultrasonic sensing, motion detection, sound sensors, LEDs, and a NeoPixel ring to monitor environmental inputs and provide real-time visual feedback. The objective was to explore how multiple sensing technologies could be combined to create responsive machine behaviour, demonstrating key embedded systems concepts such as sensor integration, signal processing, hardware interfacing, and feedback control. Through this project, we gained practical experience in circuit design, microcontroller programming, debugging, and collaborative system development while creating a functional prototype capable of reacting dynamically to its surroundings."
+        },
+        {
+            title: "Electrical",
+            image: "../Images/Mic.png",
+            color: "#5B5858",
+            details: "<strong> Mic Subsystem</strong> focuses on the design and implementation of an audio input subsystem for a Crypto-Box security system. The subsystem uses a microphone sensor to detect clap inputs, which are converted into electrical signals for processing. A monostable 555 timer circuit is used to generate clean digital pulses from each clap, allowing accurate counting of inputs. The clap count is displayed using a CD4033BE counter IC connected to a 7-segment display, representing the first digit of a four-digit unlock code. Logic gates are used to verify whether the correct number of claps (six) has been entered and to indicate success via an output signal. An astable 555 timer circuit is intended to function as a 21-second master countdown timer triggered by the first clap. Simulation and measurement results show similar waveform behaviour, although some component values did not produce fully expected timing results in practice. Overall, the subsystem successfully detects and counts claps and displays the correct digit, but the master timer triggering function was not fully achieved."
+        }
     ];
 
+    // Find the container in the HTML where project cards will be placed
     const container = document.getElementById("projects-container");
 
+    // Only run this code on the projects page 
     if (container) {
+
+        // Loop through each project and build its card
         projects.forEach(project => {
+
+            // The outer wrapper clips the sliding track so only one panel shows at a time
             const wrapper = document.createElement("div");
             wrapper.className = "wrapper";
 
+            // The track holds both the front and back panels side by side
+            // Sliding it left reveals the back panel
             const track = document.createElement("div");
             track.className = "track";
             track.style.background = project.color;
 
-            // FRONT OF THE CARDS 
+            //FRONT PANEL
             const front = document.createElement("div");
             front.className = "front";
 
+            // Project title
             const infoBox = document.createElement("div");
             infoBox.className = "info-box";
 
+            // Create and add the project title
             const title = document.createElement("h2");
             title.textContent = project.title;
+            infoBox.appendChild(title);
 
-            const desc = document.createElement("p");
-            desc.textContent = project.details;
+            // Thumbnail image only visible on mobile via CSS
+            const thumb = document.createElement("img");
+            thumb.src = project.image;
+            thumb.alt = project.title;
+            thumb.className = "project-mobile-thumb";
 
+            // Arrow button that slides the card to show the back panel
             const arrowBtn = document.createElement("button");
             arrowBtn.className = "arrow-btn";
             arrowBtn.textContent = "›";
 
-            infoBox.appendChild(title);
-        
+            // Add thumbnail, info box, and arrow button to the front panel
+            front.appendChild(thumb);
             front.appendChild(infoBox);
             front.appendChild(arrowBtn);
 
-            // SLIDE PART OF THE CARDS 
+            // BACK PANEL
             const back = document.createElement("div");
             back.className = "back";
 
+            // Close button that slides the card back to the front panel
             const closeBtn = document.createElement("button");
             closeBtn.className = "close-btn";
             closeBtn.textContent = "‹";
 
+            // Image shown on the back panel
             const imgWrap = document.createElement("div");
             imgWrap.className = "back-img-wrap";
 
             const img = document.createElement("img");
             img.src = project.image;
-            img.alt = project.imageLabel;
+            img.alt = project.title;
             img.className = "back-img";
-
-
             imgWrap.appendChild(img);
-            
+
+            // Detail text shown on the back panel
             const detailBox = document.createElement("div");
             detailBox.className = "detail-box";
 
             const details = document.createElement("p");
             details.innerHTML = project.details;
-             infoBox.appendChild(title);
             detailBox.appendChild(details);
 
+            // Add all back panel elements
             back.appendChild(closeBtn);
             back.appendChild(imgWrap);
             back.appendChild(detailBox);
 
+            // SLIDE BEHAVIOUR
+            // Clicking the arrow slides the track left 
             arrowBtn.addEventListener("click", () => {
                 track.style.transform = "translateX(-50%)";
             });
 
+            // Clicking the close button slides the track back 
             closeBtn.addEventListener("click", () => {
                 track.style.transform = "translateX(0)";
             });
 
+            // Assemble everything and add to the page
             track.appendChild(front);
             track.appendChild(back);
             wrapper.appendChild(track);
@@ -114,10 +168,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // GAME BLOGS SIDEBAR
     const sidebarHeader = document.getElementById("sidebar-header");
     const genreListEl = document.getElementById("genre-list");
 
+    // Only run if on the game blogs page
     if (sidebarHeader) {
+
+        // Build the three lines menu icon 
         const menuIcon = document.createElement("div");
         menuIcon.className = "menu-icon";
 
@@ -132,17 +190,21 @@ document.addEventListener('DOMContentLoaded', () => {
         menuIcon.appendChild(line2);
         menuIcon.appendChild(line3);
 
+        // Genre label next to the menu icon
         const genreText = document.createElement("p");
         genreText.textContent = "Genre";
         genreText.style.color = "#F1EFEF";
         genreText.style.fontFamily = "'Times New Roman', Times, serif";
 
+        // Add the icon and label to the sidebar header
         sidebarHeader.appendChild(menuIcon);
         sidebarHeader.appendChild(genreText);
 
         if (genreListEl) {
+            // Hide the genre list by default
             genreListEl.style.display = "none";
 
+            // Toggle the genre list open or closed when the header is clicked
             sidebarHeader.addEventListener("click", () => {
                 const isOpen = genreListEl.style.display === "block";
                 genreListEl.style.display = isOpen ? "none" : "block";
@@ -150,12 +212,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // BLOG POSTS
     const blogContent = document.getElementById("blog-content");
     const genreList = document.getElementById("genre-list");
 
+    //Arrays for the different blogs 
     const blogs = [
-        
-{ genre: "Action RPG", title: "WarFrame", image: "../Images/Warframe.jpg",imgLabel:"Image from Wikipedia", text: `Warframe stands out because of its fluid movement, fast combat and highly layered progression systems, all of which combine to create a gameplay experience focused on speed, mastery and continuous improvement. At its core, the game is built around momentum. Players are constantly moving, attacking and combining abilities in ways that make gameplay feel smooth and uninterrupted. Through ludoliteracy, players gradually learn how movement, combat and progression systems connect together to create efficiency and mastery.
+        {
+            genre: "Action RPG",
+            title: "WarFrame",
+            image: "../Images/Warframe.jpg",
+            imgLabel: "Image from Wikipedia",
+            text: `Warframe stands out because of its fluid movement, fast combat and highly layered progression systems, all of which combine to create a gameplay experience focused on speed, mastery and continuous improvement. At its core, the game is built around momentum. Players are constantly moving, attacking and combining abilities in ways that make gameplay feel smooth and uninterrupted. Through ludoliteracy, players gradually learn how movement, combat and progression systems connect together to create efficiency and mastery.
 
 One of the main themes in Warframe is transcendence through mastery. Players begin as relatively weak characters with limited equipment but over time they evolve into extremely powerful and highly mobile warriors. This transformation is achieved mechanically rather than through story alone. Progression is tied directly to learning systems, improving builds and mastering movement techniques. Zagal (2010) explains that ludoliteracy involves understanding meaning through procedural systems and Warframe demonstrates this clearly because player growth is defined by knowledge and mechanical skill. Critically, this progression system is highly rewarding because it gives players a clear sense of improvement but it also creates a steep barrier for beginners who may struggle to understand the game's complexity early on.
 
@@ -173,10 +241,14 @@ Warframe's progression systems further reinforce its focus on mastery and experi
 
 The game's complexity creates a steep learning curve, especially for new players. Systems such as crafting, modding, faction reputation and resource management can initially feel overwhelming. However, this complexity is also one of the reasons the game maintains long-term engagement. Juul (2013) explains that challenge and improvement cycles create emotional investment and Warframe constantly rewards players for learning and mastering its systems over time. The game succeeds because progression feels earned through understanding and experimentation rather than simple repetition.
 
-Overall, Warframe succeeds because it combines movement, combat and progression into one deeply interconnected system. The result is a highly expressive and immersive gameplay experience built around mastery, experimentation and continuous growth. At the same time, the game reveals important tensions between depth and accessibility, speed and clarity and freedom and systemic complexity.` },
-       
-
-{ genre: "Hero Shooter", title: "Marvel Rivals", image: "../Images/Marvel Rivals.jpg", imgLabel:"Image from Epic games",text: `Marvel Rivals creates its gameplay experience around teamwork, hero synergy, and fast paced multiplayer combat. Rather than focusing only on shooting accuracy or reaction speed, the game emphasises co-operation, role co-ordination, and the strategic use of character abilities. Every hero has unique movement options, cooldown abilities, and ultimate attacks, meaning matches are built around layered decision-making and team interaction. Through the idea of ludoliteracy, players gradually learn how different systems connect and how teamwork becomes more important than individual performance alone.
+Overall, Warframe succeeds because it combines movement, combat and progression into one deeply interconnected system. The result is a highly expressive and immersive gameplay experience built around mastery, experimentation and continuous growth. At the same time, the game reveals important tensions between depth and accessibility, speed and clarity and freedom and systemic complexity.`
+        },
+        {
+            genre: "Hero Shooter",
+            title: "Marvel Rivals",
+            image: "../Images/Marvel Rivals.jpg",
+            imgLabel: "Image from Epic Games",
+            text: `Marvel Rivals creates its gameplay experience around teamwork, hero synergy, and fast paced multiplayer combat. Rather than focusing only on shooting accuracy or reaction speed, the game emphasises co-operation, role co-ordination, and the strategic use of character abilities. Every hero has unique movement options, cooldown abilities, and ultimate attacks, meaning matches are built around layered decision-making and team interaction. Through the idea of ludoliteracy, players gradually learn how different systems connect and how teamwork becomes more important than individual performance alone.
 
 A major theme in Marvel Rivals is controlled chaos within heroic identity. Players control iconic superheroes with powerful abilities but despite this power fantasy, success still depends heavily on teamwork and co-ordination. This creates an interesting contrast between feeling individually powerful while also relying on teammates to succeed. Strength in the game is therefore relational rather than independent because no hero is fully effective without support from the rest of the team. Critically, this tension strengthens the multiplayer experience because it prevents gameplay from becoming purely individualistic. However, dependence on team co-ordination can also frustrate players when teammates fail to cooperate effectively.
 
@@ -192,9 +264,14 @@ From a genre perspective, Marvel Rivals fits within the hero shooter and class-b
 
 The combat itself is fast, chaotic and visually intense. Multiple abilities, movement effects and explosions often overlap on screen, creating cinematic battles that feel exciting and energetic. While this sensory intensity adds excitement, it can sometimes reduce clarity during large team fights. Over time, however, players learn to interpret visual effects, timing windows and movement patterns more effectively through repeated play. This reflects ludoliteracy because players gradually become fluent in the visual language of combat systems. However, excessive visual clutter may overwhelm new players or reduce strategic readability during competitive gameplay.
 
-Overall, Marvel Rivals succeeds because it creates a multiplayer experience built around teamwork, synergy, and controlled chaos. The game rewards players who learn how systems interact and who adapt to the constantly shifting dynamics of team-based combat. At the same time, it reveals important tensions between accessibility and balance, freedom and structure, and cinematic spectacle and competitive clarity.` },
-        
-{ genre: "Horror", title: "Phasmophobia", image: "../Images/Phasmo.jpg",imgLabel:"Image from Wikipedia", text: `Phasmophobia is a horror-survival investigation game that places players in the role of paranormal investigators exploring haunted houses, schools, prisons, and abandoned locations in search of evidence to identify different ghost types. Using tools such as EMF readers, thermometers, spirit boxes, flashlights, and video cameras, players slowly piece together clues while trying to survive increasingly dangerous encounters. Unlike many horror games that give players weapons or combat systems, Phasmophobia removes the ability to fight back completely. This design choice creates vulnerability and tension because survival depends on observation, communication, and quick decision-making rather than power. According to Zagal's (2010) concept of ludoliteracy, players learn meaning through interaction with systems and mechanics rather than only through story or visuals. In Phasmophobia, fear is taught mechanically. Players gradually learn how the game communicates danger through sounds, lighting, environmental changes and ghost behaviour patterns.
+Overall, Marvel Rivals succeeds because it creates a multiplayer experience built around teamwork, synergy, and controlled chaos. The game rewards players who learn how systems interact and who adapt to the constantly shifting dynamics of team-based combat. At the same time, it reveals important tensions between accessibility and balance, freedom and structure, and cinematic spectacle and competitive clarity.`
+        },
+        {
+            genre: "Horror",
+            title: "Phasmophobia",
+            image: "../Images/Phasmo.jpg",
+            imgLabel: "Image from Wikipedia",
+            text: `Phasmophobia is a horror-survival investigation game that places players in the role of paranormal investigators exploring haunted houses, schools, prisons, and abandoned locations in search of evidence to identify different ghost types. Using tools such as EMF readers, thermometers, spirit boxes, flashlights, and video cameras, players slowly piece together clues while trying to survive increasingly dangerous encounters. Unlike many horror games that give players weapons or combat systems, Phasmophobia removes the ability to fight back completely. This design choice creates vulnerability and tension because survival depends on observation, communication, and quick decision-making rather than power. According to Zagal's (2010) concept of ludoliteracy, players learn meaning through interaction with systems and mechanics rather than only through story or visuals. In Phasmophobia, fear is taught mechanically. Players gradually learn how the game communicates danger through sounds, lighting, environmental changes and ghost behaviour patterns.
 
 One of the strongest themes in Phasmophobia is helplessness in the unknown. Fear is not created through scripted jump scares alone but through systems that intentionally limit player control. Players are constantly unsure whether they are safe, whether the ghost is nearby or whether they have gathered enough evidence. This uncertainty becomes the core horror experience. Even in multiplayer, where players can work together, the feeling of vulnerability never fully disappears. Instead, fear becomes shared. The game teaches players to understand risk through repeated interaction, which reflects ludoliteracy because players slowly become familiar with how fear operates within the game's systems. Critically, this design is highly effective because it aligns gameplay mechanics directly with emotional experience. However, as players become more experienced, some of the unpredictability can become routine, reducing the emotional impact of fear and shifting the experience toward mechanical optimisation instead.
 
@@ -212,30 +289,38 @@ The death mechanic is especially impactful because it removes player control com
 
 Multiplayer interaction is another major strength of the game. Proximity voice chat means players can only hear teammates clearly when nearby, making separation dangerous. The ghost can also react to player speech through voice recognition systems, which blurs the line between player and game world. Nitsche (2008) refers to this as spatial presence, where players feel physically located inside the virtual environment. In Phasmophobia, even speaking out loud can feel risky, which makes communication itself part of the horror experience. Critically, this mechanic strengthens immersion by making real-world player behaviour directly affect gameplay systems.
 
-Overall, Phasmophobia succeeds because all of its mechanics, systems, and environmental design choices work together to create fear through uncertainty, vulnerability, and immersion. Its horror does not come mainly from story or scripted events but from the way players interact with the game's systems and gradually learn how danger operates within them.` },
-        
+Overall, Phasmophobia succeeds because all of its mechanics, systems, and environmental design choices work together to create fear through uncertainty, vulnerability, and immersion. Its horror does not come mainly from story or scripted events but from the way players interact with the game's systems and gradually learn how danger operates within them.`
+        }
     ];
 
+    // GENRE SIDEBAR 
     if (genreList) {
+        // Clear any existing list items
         genreList.innerHTML = "";
 
+        // Group the blogs by genre so we can display genre headings
         const grouped = {};
         blogs.forEach(blog => {
             if (!grouped[blog.genre]) grouped[blog.genre] = [];
             grouped[blog.genre].push(blog);
         });
 
+        // Loop through each genre group and create the sidebar list items
         Object.keys(grouped).forEach(genre => {
+
+            // Create a heading for the genre 
             const genreHeading = document.createElement("li");
             genreHeading.className = "genre-heading";
             genreHeading.textContent = genre;
             genreList.appendChild(genreHeading);
 
+            // Create a clickable list item for each blog in this genre
             grouped[genre].forEach(blog => {
                 const li = document.createElement("li");
                 li.className = "genre-item";
                 li.textContent = blog.title;
 
+                // When clicked, highlight this item and load the blog content
                 li.addEventListener("click", () => {
                     document.querySelectorAll(".genre-item").forEach(el => el.classList.remove("active"));
                     li.classList.add("active");
@@ -247,32 +332,42 @@ Overall, Phasmophobia succeeds because all of its mechanics, systems, and enviro
         });
     }
 
+    // LOAD A BLOG INTO THE CONTENT AREA
     function loadBlog(blog) {
+        // Do nothing if the blog data is missing
         if (!blogContent || !blog) return;
+
+        // Clear the content area before loading the new blog
         blogContent.innerHTML = "";
 
+        // Create and add the genre title
         const genreTitle = document.createElement("h2");
         genreTitle.className = "blog-genre-title";
         genreTitle.textContent = blog.genre;
 
+        // Create and add the game title 
         const gameTitle = document.createElement("h3");
         gameTitle.className = "blog-game-title";
         gameTitle.textContent = blog.title;
 
+        // Create and add the cover image
         const img = document.createElement("img");
         img.src = blog.image;
         img.alt = blog.title;
         img.className = "blog-cover";
 
+        // Create and add the image label 
         const imgLabel = document.createElement("p");
         imgLabel.textContent = blog.imgLabel;
         imgLabel.className = "blog-cover-label";
 
+        // Create and add the blog text
         const text = document.createElement("p");
-        text.style.whiteSpace = "pre-line";
+        text.style.whiteSpace = "pre-line"; // Preserves paragraph line breaks IN THE BLOG TEXT 
         text.textContent = blog.text;
         text.className = "blog-text";
 
+        // Append everything to the content area in order
         blogContent.appendChild(genreTitle);
         blogContent.appendChild(gameTitle);
         blogContent.appendChild(img);
@@ -280,12 +375,17 @@ Overall, Phasmophobia succeeds because all of its mechanics, systems, and enviro
         blogContent.appendChild(text);
     }
 
+    // Load the first blog automatically when the page opens
     if (blogContent) {
         loadBlog(blogs[0]);
+
+        // Highlight the first sidebar item as active
         const firstItem = document.querySelector(".genre-item");
         if (firstItem) firstItem.classList.add("active");
     }
 
+    // CONTACT PAGE FOOTER STYLING
+    // Apply extra styles to the footer only on the contact page
     const contactFooter = document.querySelector("body.contact-page footer");
 
     if (contactFooter) {
@@ -297,6 +397,7 @@ Overall, Phasmophobia succeeds because all of its mechanics, systems, and enviro
         const center = contactFooter.querySelector(".footer-center");
         const right = contactFooter.querySelector(".footer-right");
 
+        // Centre-align all three footer columns
         [left, center, right].forEach(col => {
             if (col) {
                 col.style.flex = "0";
@@ -305,10 +406,12 @@ Overall, Phasmophobia succeeds because all of its mechanics, systems, and enviro
             }
         });
 
+        // Make footer links larger on the contact page
         contactFooter.querySelectorAll("a").forEach(a => {
             a.style.fontSize = "20px";
         });
 
+        // Style footer paragraphs on the contact page
         contactFooter.querySelectorAll("p").forEach(p => {
             p.style.fontSize = "18px";
             p.style.fontStyle = "italic";
